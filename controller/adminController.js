@@ -38,9 +38,14 @@ const user=async(req,res)=>{
 }
 
 
+const addProduct=async(req,res)=>{
+      console.log(req.body)
+      res.send('okk')
+}
 
 
 
 module.exports={
-    user
+    user,
+    addProduct
 }
