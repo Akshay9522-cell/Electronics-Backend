@@ -1,4 +1,5 @@
 const adminModel=require('../model/adminModel')
+const productModel=require('../model/productModel')
 const user=async(req,res)=>{
     const{ adminid, password }=req.body
     console.log(req.body)
@@ -39,13 +40,38 @@ const user=async(req,res)=>{
 
 
 const addProduct=async(req,res)=>{
-      console.log(req.body)
-      res.send('okk')
+       
+    const imageURL=req.files.map(file=>file.path)
+    console.log(imageURL)
+ const { name,description,category,company,price}=req.body
+
+    try {
+         const data= await productModel.create({
+            name,
+            description,
+            category,
+            company,
+            price,
+            defaultImage:imageURL[0],
+            images:imageURL
+
+         })
+         res.send(data)
+    } catch (error) {
+        console.log(error)
+    }  
+}
+
+const productData=async(req,res)=>{
+       
+    const data=await productModel.find()
+    res.send(data)
 }
 
 
 
 module.exports={
     user,
-    addProduct
+    addProduct,
+    productData
 }

@@ -11,6 +11,7 @@ app.use(bodyparser.json())
 app.use(bodyparser.urlencoded({extended:true}))
 
 app.use(cors())
+app.use('/uploads', express.static('uploads'))
 
 mongoose.connect(process.env.MONGO).then(()=>{
       console.log("DB connected")

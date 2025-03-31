@@ -25,6 +25,8 @@ route.post('/login',userController.user)
 
 route.post('/add',upload.array('image',5),userController.addProduct)
 
+route.get('/product',userController.productData)
+
 
 
 

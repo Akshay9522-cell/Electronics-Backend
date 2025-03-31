@@ -8,5 +8,9 @@ const productSchema= new mongoose.Schema({
     description:String,
     category:String,
     company:String,
-    price:String
+    price:String,
+    defaultImage:String,
+    images:[String]
 })
+
+module.exports=mongoose.model('product',productSchema)
