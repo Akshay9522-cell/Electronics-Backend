@@ -6,12 +6,12 @@ require('dotenv').config()
 const cors=require('cors')
 const mongoose=require('mongoose')
 const userRoute=require('./router/adminRouter')
-
+const path = require('path')
 app.use(bodyparser.json())
 app.use(bodyparser.urlencoded({extended:true}))
 
 app.use(cors())
-app.use('/uploads', express.static('uploads'))
+app.use('/uploads', express.static(path.join(__dirname, 'uploads')))
 
 mongoose.connect(process.env.MONGO).then(()=>{
       console.log("DB connected")

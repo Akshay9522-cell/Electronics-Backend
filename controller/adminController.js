@@ -1,5 +1,7 @@
 const adminModel=require('../model/adminModel')
 const productModel=require('../model/productModel')
+
+
 const user=async(req,res)=>{
     const{ adminid, password }=req.body
     console.log(req.body)
@@ -47,11 +49,11 @@ const addProduct=async(req,res)=>{
 
     try {
          const data= await productModel.create({
-            name,
-            description,
-            category,
-            company,
-            price,
+            name:name,
+            description:description,
+            category:category,
+            company:company,
+            price:price,
             defaultImage:imageURL[0],
             images:imageURL
 
