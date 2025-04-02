@@ -5,7 +5,8 @@ const bodyparser=require('body-parser')
 require('dotenv').config()
 const cors=require('cors')
 const mongoose=require('mongoose')
-const userRoute=require('./router/adminRouter')
+const adminRoute=require('./router/adminRouter')
+const userRoute=require('./router/useRouter')
 const path = require('path')
 app.use(bodyparser.json())
 app.use(bodyparser.urlencoded({extended:true}))
@@ -18,6 +19,7 @@ mongoose.connect(process.env.MONGO).then(()=>{
 })
 const port=process.env.PORT || 5000
 
+app.use('/electronics',adminRoute)
 app.use('/electronics',userRoute)
 app.listen(port,()=>{
     console.log("server is Rocking on")
