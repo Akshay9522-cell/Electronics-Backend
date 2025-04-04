@@ -21,6 +21,7 @@ const port=process.env.PORT || 5000
 
 app.use('/electronics',adminRoute)
 app.use('/electronics',userRoute)
+
 app.listen(port,()=>{
     console.log("server is Rocking on")
 })
